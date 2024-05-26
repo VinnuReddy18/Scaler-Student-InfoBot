@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="sessions.css" /> 
+
+<title>Sessions</title>
+</head>
+<body>
+<div class="container">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter your name">
+  </div>
+  <div class="form-group">
+    <label for="linkedin">LinkedIn Profile:</label>
+    <input type="url" id="linkedin" placeholder="Enter your LinkedIn profile URL">
+  </div>
+  <div class="form-group">
+    <label for="meeting-link">Meeting Link:</label>
+    <input type="url" id="meeting-link" placeholder="Enter meeting link">
+  </div>
+  <div class="form-group">
+    <label for="meeting-time">Meeting Time:</label>
+    <input type="datetime-local" id="meeting-time">
+  </div>
+  <button onclick="scheduleMeeting()">Schedule Meeting</button>
+  <div class="meeting-list" id="meeting-list">
+    <!-- Meeting items will be displayed here -->
+  </div>
+</div>
+<script src="sessions.js"></script>
+</body>
+</html>
