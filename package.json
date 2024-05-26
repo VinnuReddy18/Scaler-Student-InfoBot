@@ -3,6 +3,7 @@
     "@google/generative-ai": "^0.11.4",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "marked": "^12.0.2"
   }
 }

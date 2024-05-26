@@ -190,13 +190,16 @@ button:hover {
         const data = await response.json();
         const botMessage = data.response;
 
-        // Display the bot's response
-        chatHistory.innerHTML += `
-          <div class="message bot-message">
-            <img src="${botAvatar}" alt="Bot">
-            <div>${botMessage}</div>
-          </div>`;
-        chatHistory.scrollTop = chatHistory.scrollHeight;
+
+// Convert the bot's response to HTML using marked
+
+// Display the bot's response as HTML
+chatHistory.innerHTML += `
+  <div class="message bot-message">
+    <img src="${botAvatar}" alt="Bot">
+    <div>${botMessage}</div>
+  </div>`;
+chatHistory.scrollTop = chatHistory.scrollHeight;
       } catch (error) {
         console.error('Error:', error);
         // Handle errors gracefully, e.g., display an error message to the user
