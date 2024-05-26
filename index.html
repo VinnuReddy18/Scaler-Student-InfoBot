@@ -189,7 +189,7 @@ button:hover {
 
         const data = await response.json();
         const botMessage = data.response;
-
+        const formattedMessage = processMessage(botMessage);
 
 // Convert the bot's response to HTML using marked
 
@@ -197,9 +197,15 @@ button:hover {
 chatHistory.innerHTML += `
   <div class="message bot-message">
     <img src="${botAvatar}" alt="Bot">
-    <div>${botMessage}</div>
+    <div>${formattedMessage}</div>
   </div>`;
 chatHistory.scrollTop = chatHistory.scrollHeight;
+function processMessage(message) {
+  const boldRegex = /\*\*(.*?)\*\*/g;
+  const formattedMessage = message.replace(boldRegex, '<strong>$1</strong>');
+  
+  return formattedMessage;
+}
       } catch (error) {
         console.error('Error:', error);
         // Handle errors gracefully, e.g., display an error message to the user
