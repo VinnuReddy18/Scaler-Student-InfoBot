@@ -3,151 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chatbot</title>
+  <title>ScalerSage</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-body {
-  font-family: 'Arial', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  background: linear-gradient(45deg, #2c3e50, #000000);
-}
+  body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(45deg, #ffffff, #ccc3c3);
+  }
 
-#chat-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #2c3e50;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 800px;
-  height: 80vh;
-  overflow: hidden;
-  border: 2px solid #007BFF;
-}
+  #chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    height: 80vh;
+    overflow: hidden;
+    border: 2px solid #007BFF;
+  }
 
-header {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #007BFF;
-  color: white;
-}
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+  }
 
-header img {
-  height: 40px;
-  margin-right: 15px;
-}
+  header img {
+    height: 40px;
+    margin-right: 15px;
+  }
 
-header h1 {
-  font-size: 1.5em;
-  margin: 0;
-  font-family: 'Roboto Slab', serif;
-}
+  header h1 {
+    font-size: 1.5em;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+  }
 
+  #sessions-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
 
-#sessions-link {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-    }
+  #sessions-link img {
+    height: 25px;
+  }
 
-    #sessions-link img {
-      height: 25px;
-      margin-left: 315px; /* Adjust margin as needed */
-    }
+  #chat-history {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+  }
 
-#chat-history {
-  flex-grow: 1;
-  padding: 20px;
-  overflow-y: auto;
-  background-color: linear-gradient(45deg, #2c3e50, #000000);
-}
+  .message {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+    font-family: 'Poppins', sans-serif;
+  }
 
-.message {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  max-width: 70%;
-  word-wrap: break-word;
-  font-family: 'Roboto Slab', serif; 
-}
+  .user-message {
+    align-self: flex-end;
+    background-color: #d6e2ee;
+    color: rgb(0, 0, 0);
+  }
 
-.user-message {
-  align-self: flex-end;
-  background-color: #d1ecf1;
-  color: #0c5460;
-}
+  .bot-message {
+    align-self: flex-start;
+    background-color: #f5f5f5;
+    color: #333;
+  }
 
-.bot-message {
-  align-self: flex-start;
-  background-color: #e0e7ff;
-  color: #004085;
-}
+  .message img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
 
-.message img {
-  height: 30px;
-  width: 30px;
-  margin-right: 10px;
-  border-radius: 50%;
-}
+  form {
+    display: flex;
+    flex-wrap: wrap; /* Add this line */
+    border-top: 1px solid #e0e0e0;
+    padding: 10px;
+    background-color: #f5f5f5;
+  }
 
-form {
-  display: flex;
-  border-top: 1px solid #e0e0e0;
-  padding: 10px;
-  background-color: #ffffff;
-}
+  input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 10px; /* Add this line */
+  }
 
-input {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1em;
-}
+  button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
 
-button {
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px;
-}
+  button:hover {
+    background-color: #0056b3;
+  }
 
-button:hover {
-  background-color: #0056b3;
-}
-
-#loader {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+  #loader {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   </style>
 </head>
 <body>
   <div id="chat-container">
     <header>
       <img src="https://scaler-blog-prod-wp-content.s3.ap-south-1.amazonaws.com/wp-content/uploads/2021/04/22114216/74797539_118431542933200_2322441253926469632_o-1.png" alt="go">
-      <h1>Scaler Student Info-Bot</h1>
+      <h1>ScalerSage</h1>
       <a href="sessions.html" id="sessions-link">
         <img src="https://cdn-icons-png.flaticon.com/512/1999/1999051.png" alt="Sessions">
         Sessions
-      </a>
+      </a>  
     </header>
     <div id="chat-history"></div>
     <form id="chat-form">
@@ -202,7 +203,7 @@ chatHistory.innerHTML += `
 chatHistory.scrollTop = chatHistory.scrollHeight;
 function processMessage(message) {
   const boldRegex = /\*\*(.*?)\*\*/g;
-  const formattedMessage = message.replace(boldRegex, '<strong>$1</strong>');
+  const formattedMessage = message.replace(boldRegex, '<br><strong>$1</strong>');
   
   return formattedMessage;
 }
