@@ -6,221 +6,218 @@
   <title>ScalerSage</title>
   <link rel="icon" href="https://picsvg.com/svg/tMZznF.jpg" type="image/icon type">
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-  body {
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background: linear-gradient(45deg, #ffffff, #ccc3c3);
-  }
-
-  #chat-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
-    height: 80vh;
-    overflow: hidden;
-    border: 2px solid #0008ff;
-  }
-
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #0008ff;
-    color: white;
-  }
-
-  header img {
-    height: 40px;
-    margin-right: 15px;
-  }
-
-  header h1 {
-    font-size: 1.5em;
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-  }
-
-  #sessions-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-  }
-
-  #sessions-link img {
-    height: 25px;
-  }
-
-  #chat-history {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
-    background-color: #f5f5f5;
-  }
-
-  .message {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    max-width: 70%;
-    word-wrap: break-word;
-    font-family: 'Poppins', sans-serif;
-  }
-
-  .user-message {
-    align-self: flex-end;
-    background-color: #d6e2ee;
-    color: rgb(0, 0, 0);
-    margin-left: auto;
-  }
-
-  .bot-message {
-    align-self: flex-start;
-    background-color: #f5f5f5;
-    color: #333;
-  }
-
-  .message img {
-    height: 30px;
-    width: 30px;
-    margin-right: 10px;
-    border-radius: 50%;
-  }
-
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    border-top: 1px solid #e0e0e0;
-    padding: 10px;
-    background-color: #f5f5f5;
-  }
-
-  input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-  }
-
-  button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-
-  button:hover {
-    background-color: #0056b3;
-  }
-
-  #loader {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  #info {
-    display: flex;
-    align-items: center;
-    font-size: 0.65em;
-    color: #856404;
-    /* margin-top: 2px; */
-    font-family: 'Poppins', sans-serif;
-    padding: 2px;
-    /* background-color: #fff3cd;
-    border: 1px solid #ffeeba; */
-    border-radius: 3px;
-    justify-content: center;
-  }
-
-  #info i {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    border-radius: 50%;
-    background-color: #ffeeba;
-    color: #856404;
-    text-align: center;
-    margin-right: 10px;
-    font-style: normal;
-    font-weight: bold;
-    justify-content: center;
-  }
-
-  /* Responsive design */
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 1.2em;
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(45deg, #ffffff, #ccc3c3);
     }
 
     #chat-container {
-      width: 95%;
-      height: 90vh;
-    }
-
-    #chat-history {
-      padding: 15px;
-    }
-
-    .message {
-      max-width: 85%;
-    }
-
-    button {
-      margin-left: 0;
-      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       width: 100%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    header h1 {
-      font-size: 1em;
+      max-width: 800px;
+      height: 80vh;
+      overflow: hidden;
+      border: 2px solid #0008ff;
     }
 
-    #chat-container {
-      width: 100%;
-      height: 95vh;
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #0008ff;
+      color: white;
     }
 
     header img {
-      height: 30px;
+      height: 40px;
+      margin-right: 15px;
+    }
+
+    header h1 {
+      font-size: 1.5em;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #sessions-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
     }
 
     #sessions-link img {
-      height: 20px;
+      height: 25px;
+    }
+
+    #chat-history {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background-color: #f5f5f5;
     }
 
     .message {
-      font-size: 14px;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      max-width: 70%;
+      word-wrap: break-word;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .user-message {
+      align-self: flex-end;
+      background-color: #d6e2ee;
+      color: rgb(0, 0, 0);
+      margin-left: auto;
+    }
+
+    .bot-message {
+      align-self: flex-start;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    .message img {
+      height: 30px;
+      width: 30px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      border-top: 1px solid #e0e0e0;
+      padding: 10px;
+      background-color: #f5f5f5;
     }
 
     input {
-      padding: 8px;
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
     }
-  }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #loader {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #info {
+      display: flex;
+      align-items: center;
+      font-size: 0.65em;
+      color: #856404;
+      font-family: 'Poppins', sans-serif;
+      padding: 2px;
+      border-radius: 3px;
+      justify-content: center;
+    }
+
+    #info i {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      border-radius: 50%;
+      background-color: #ffeeba;
+      color: #856404;
+      text-align: center;
+      margin-right: 10px;
+      font-style: normal;
+      font-weight: bold;
+      justify-content: center;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.2em;
+      }
+
+      #chat-container {
+        width: 95%;
+        height: 90vh;
+      }
+
+      #chat-history {
+        padding: 15px;
+      }
+
+      .message {
+        max-width: 85%;
+      }
+
+      button {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1em;
+      }
+
+      #chat-container {
+        width: 100%;
+        height: 95vh;
+      }
+
+      header img {
+        height: 30px;
+      }
+
+      #sessions-link img {
+        height: 20px;
+      }
+
+      .message {
+        font-size: 14px;
+      }
+
+      input {
+        padding: 8px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -249,13 +246,23 @@
     const chatHistory = document.getElementById('chat-history');
     const userInput = document.getElementById('user-input');
     const form = document.getElementById('chat-form');
+    const sendButton = document.querySelector('button[type="submit"]');
+    const loader = document.getElementById('loader');
 
-    const userAvatar = 'https://cdn-icons-png.freepik.com/256/8747/8747415.png?semt=ais_hybrid'; 
+    const userAvatar = 'https://cdn-icons-png.freepik.com/256/8747/8747415.png?semt=ais_hybrid';
     const botAvatar = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy4iKxuz8pJuG3KabET56zcnL2hCZNk-aW8A&s';
 
     async function sendMessage() {
-      const userMessage = userInput.value;
-      userInput.value = ''; 
+      const userMessage = userInput.value.trim(); // Trim to remove whitespace
+
+      if (userMessage === '') {
+        return; // Exit function if input is empty
+      }
+
+      // Disable input and button while waiting for response
+      userInput.disabled = true;
+      sendButton.disabled = true;
+      loader.style.display = 'block'; // Show the loader
 
       // Display the user's message immediately
       chatHistory.innerHTML += `
@@ -288,9 +295,15 @@
       } catch (error) {
         console.error('Error:', error);
         // Handle errors gracefully, e.g., display an error message to the user
+      } finally {
+        // Enable input and button after response or error
+        userInput.disabled = false;
+        sendButton.disabled = false;
+        loader.style.display = 'none'; // Hide the loader
+        userInput.value = ''; // Clear input field
       }
     }
-    
+
     function processMessage(message) {
       const boldRegex = /\*\*(.*?)\*\*/g;
       const formattedMessage = message.replace(boldRegex, '<br><strong>$1</strong>');
@@ -300,18 +313,15 @@
 
     form.addEventListener('submit', (event) => {
       event.preventDefault(); // Prevent form submission
-      const loader = document.getElementById('loader');
-      loader.style.display = 'block'; // Show the loader
-      sendMessage().finally(() => {
-        loader.style.display = 'none'; // Hide the loader after the message is sent
-      });
+      sendMessage();
     });
+
     const sessionsButton = document.getElementById('sessions-link');
     sessionsButton.addEventListener('click', openSessionsPage);
 
     // Function to open the sessions page
     function openSessionsPage() {
-        window.location.href = 'sessions.html';
+      window.location.href = 'sessions.html';
     }
   </script>
 </body>
