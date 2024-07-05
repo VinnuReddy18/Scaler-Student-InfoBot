@@ -51,13 +51,48 @@
       margin: 0;
       font-family: 'Poppins', sans-serif;
     }
-
     #sessions-link {
       display: flex;
       align-items: center;
       text-decoration: none;
       color: white;
       font-weight: bold;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% {
+      opacity: 1;
+      }
+      50% {
+      opacity: 0;
+      }
+      100% {
+      opacity: 1;
+      }
+    }
+
+    #sessions-link::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: red;
+      margin-right: 5px;
+      animation: dot-blink 1s infinite;
+    }
+
+    @keyframes dot-blink {
+      0% {
+      opacity: 1;
+      }
+      50% {
+      opacity: 0;
+      }
+      100% {
+      opacity: 1;
+      }
     }
 
     #sessions-link img {

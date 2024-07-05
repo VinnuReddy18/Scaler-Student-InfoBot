@@ -36,13 +36,13 @@
     }
   }
 
-  .no-sessions {
+  .upcoming-session {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .no-sessions img {
+  .upcoming-session img {
     width: 100px;
     height: 100px;
     margin-bottom: 20px;
@@ -61,25 +61,58 @@
     }
   }
 
-  .no-sessions h2 {
+  .upcoming-session h2 {
     font-size: 24px;
     color: #333;
     margin-bottom: 10px;
   }
 
-  .no-sessions p {
+  .upcoming-session p {
     font-size: 16px;
     color: #666;
+    margin-bottom: 20px;
+  }
+
+  .upcoming-session form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .upcoming-session input[type="text"], 
+  .upcoming-session input[type="email"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .upcoming-session input[type="submit"] {
+    width: 50%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .upcoming-session input[type="submit"]:hover {
+    background-color: #0056b3;
   }
 </style>
 <title>Sessions</title>
 </head>
 <body>
 <div class="container">
-  <div class="no-sessions">
-    <img src="https://t3.ftcdn.net/jpg/01/12/43/90/360_F_112439022_Sft6cXK9GLnzWjjIkVMj2Lt34RcKUpxm.jpg" alt="No Sessions">
-    <h2>No Active Sessions</h2>
-    <p>There are no active sessions right now. Please check back later.</p>
+  <div class="upcoming-session">
+    <img src="https://png.pngtree.com/png-vector/20190217/ourmid/pngtree-smile-vector-template-design-illustration-png-image_555090.jpg" alt="Upcoming Session">
+    <h2>Upcoming Session</h2>
+    <p>There is a session coming up soon. Fill in the form to participate. Click on Participate Now</p>
+    <a href="https://forms.gle/xr4mCkKV2d9X7J7C9" class="participate-link">Participate Now</a>
   </div>
 </div>
 </body>
