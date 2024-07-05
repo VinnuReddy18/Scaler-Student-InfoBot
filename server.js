@@ -1,3 +1,7 @@
+const express = require('express');
+const { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } = require('@google/generative-ai');
+const dotenv = require('dotenv').config()
+
   /*
  * Install the Generative AI SDK
  *
@@ -6,15 +10,12 @@
  * See the getting started guide for more information
  * https://ai.google.dev/gemini-api/docs/get-started/node
  */
-
-  const express = require('express');
-  const { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } = require('@google/generative-ai');
-  const dotenv = require('dotenv').config()
-  
-  const app = express();
-  const port = process.env.PORT || 3000;
-  app.use(express.json());
-  const API_KEY = process.env.API_KEY;
+const app = express();
+const port = process.env.PORT || 3000;
+app.use(express.json());
+const API_KEYS = [process.env.API_KEY1, process.env.API_KEY2, process.env.API_KEY3]; // Add your API keys here
+const getRandomAPIKey = () => API_KEYS[Math.floor(Math.random() * API_KEYS.length)];
+const API_KEY = getRandomAPIKey();
   
   async function runChat(userInput) {
     const genAI = new GoogleGenerativeAI(API_KEY);
