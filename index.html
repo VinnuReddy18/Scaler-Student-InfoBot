@@ -217,6 +217,19 @@
         padding: 8px;
       }
     }
+
+    #voice-popup {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      display: none;
+      font-family: 'Poppins', sans-serif;
+    }
   </style>
 </head>
 <body>
@@ -233,6 +246,7 @@
     <form id="chat-form">
       <input type="text" id="user-input" placeholder="Enter your message">
       <button type="submit">Send</button>
+      <button type="button" id="voice-button"><img src="https://static.thenounproject.com/png/3039263-200.png" alt="Voice" style="height: 20px; width: 20px;"></button>
     </form>
     <div id="info">
       <i>i</i> This is the beta version. Responses may take some time. Stay tuned for latest version.
@@ -241,15 +255,45 @@
   <div id="loader">
     <img src="loader.gif" width="150px" alt="Loading..."> 
   </div>
+  <div id="voice-popup">Listening...</div>
   <script>
     const chatHistory = document.getElementById('chat-history');
     const userInput = document.getElementById('user-input');
     const form = document.getElementById('chat-form');
     const sendButton = document.querySelector('button[type="submit"]');
+    const voiceButton = document.getElementById('voice-button');
     const loader = document.getElementById('loader');
+    const voicePopup = document.getElementById('voice-popup');
 
     const userAvatar = 'https://cdn-icons-png.freepik.com/256/8747/8747415.png?semt=ais_hybrid';
     const botAvatar = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy4iKxuz8pJuG3KabET56zcnL2hCZNk-aW8A&s';
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+
+    voiceButton.addEventListener('click', () => {
+      recognition.start();
+    });
+
+    recognition.addEventListener('start', () => {
+      voicePopup.textContent = 'Listening...';
+      voicePopup.style.display = 'block';
+    });
+
+    recognition.addEventListener('result', (event) => {
+      const transcript = event.results[0][0].transcript.trim();
+      userInput.value = transcript;
+      sendMessage();
+    });
+
+    recognition.addEventListener('end', () => {
+      voicePopup.textContent = 'Processing...';
+      setTimeout(() => {
+        voicePopup.style.display = 'none';
+      }, 1000); // Hide the popup after 1 second
+    });
 
     async function sendMessage() {
       const userMessage = userInput.value.trim(); // Trim to remove whitespace
@@ -291,6 +335,10 @@
             <div>${formattedMessage}</div>
           </div>`;
         chatHistory.scrollTop = chatHistory.scrollHeight;
+
+        // Voice output
+        // const utterance = new SpeechSynthesisUtterance(botMessage);
+        // window.speechSynthesis.speak(utterance);
       } catch (error) {
         console.error('Error:', error);
         // Handle errors gracefully, e.g., display an error message to the user
@@ -306,7 +354,7 @@
     function processMessage(message) {
       const boldRegex = /\*\*(.*?)\*\*/g;
       const formattedMessage = message.replace(boldRegex, '<br><strong>$1</strong>');
-      
+
       return formattedMessage;
     }
 
